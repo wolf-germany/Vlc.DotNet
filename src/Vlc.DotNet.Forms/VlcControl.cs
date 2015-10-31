@@ -42,7 +42,7 @@ namespace Vlc.DotNet.Forms
                 if (myVlcMediaPlayer != null)
                 {
                     return myVlcMediaPlayer.IsPlaying();
-        }
+                }
                 else
                 {
                     return false;
@@ -99,12 +99,12 @@ namespace Vlc.DotNet.Forms
         {
             if (disposing)
             {
-            if (myVlcMediaPlayer != null)
-            {
-                UnregisterEvents();
-                if (IsPlaying)
-                    Stop();
-                myVlcMediaPlayer.Dispose();
+                if (myVlcMediaPlayer != null)
+                {
+                    UnregisterEvents();
+                    if (IsPlaying)
+                        Stop();
+                    myVlcMediaPlayer.Dispose();
                 }
                 base.Dispose(disposing);
                 GC.SuppressFinalize(this);
@@ -131,8 +131,8 @@ namespace Vlc.DotNet.Forms
             //EndInit();
             if (myVlcMediaPlayer != null)
             {
-            myVlcMediaPlayer.Play();
-        }
+                myVlcMediaPlayer.Play();
+            }
         }
 
         public void Play(FileInfo file, params string[] options)
@@ -140,9 +140,9 @@ namespace Vlc.DotNet.Forms
             //EndInit();
             if (myVlcMediaPlayer != null)
             {
-            myVlcMediaPlayer.SetMedia(file, options);
-            Play();
-        }
+                myVlcMediaPlayer.SetMedia(file, options);
+                Play();
+            }
         }
 
         public void Play(Uri uri, params string[] options)
@@ -150,9 +150,9 @@ namespace Vlc.DotNet.Forms
             //EndInit();
             if (myVlcMediaPlayer != null)
             {
-            myVlcMediaPlayer.SetMedia(uri, options);
-            Play();
-        }
+                myVlcMediaPlayer.SetMedia(uri, options);
+                Play();
+            }
         }
 
         public void Pause()
@@ -160,8 +160,8 @@ namespace Vlc.DotNet.Forms
             //EndInit();
             if (myVlcMediaPlayer != null)
             {
-            myVlcMediaPlayer.Pause();
-        }
+                myVlcMediaPlayer.Pause();
+            }
         }
 
         public void Stop()
@@ -169,8 +169,8 @@ namespace Vlc.DotNet.Forms
             //EndInit();
             if (myVlcMediaPlayer != null)
             {
-            myVlcMediaPlayer.Stop();
-        }
+                myVlcMediaPlayer.Stop();
+            }
 
         }
 
@@ -179,12 +179,18 @@ namespace Vlc.DotNet.Forms
             //EndInit();
             if (myVlcMediaPlayer != null)
             {
-            return myVlcMediaPlayer.GetMedia();
-        }
+                return myVlcMediaPlayer.GetMedia();
+            }
             else
             {
                 return null;
             }
+        }
+        
+        public void TakeSnapshot(string fileName) 
+        {
+            FileInfo fileInfo = new FileInfo(fileName);
+            myVlcMediaPlayer.TakeSnapshot(fileInfo);
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -219,13 +225,13 @@ namespace Vlc.DotNet.Forms
             {
                 if (myVlcMediaPlayer != null)
                 {
-                return myVlcMediaPlayer.Chapters;
-            }
+                    return myVlcMediaPlayer.Chapters;
+                }
                 else
                 {
                     return null;
                 }
-        }
+            }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -238,19 +244,6 @@ namespace Vlc.DotNet.Forms
                 {
                     return myVlcMediaPlayer.Rate;
                 }
-                else
-                {
-                    return -1;
-                }
-            }
-            set
-            {
-                if (myVlcMediaPlayer != null)
-                {
-                    myVlcMediaPlayer.Rate = value;
-                }
-            }
-        }
                 else
                 {
                     return -1;
@@ -288,8 +281,8 @@ namespace Vlc.DotNet.Forms
             {
                 if (myVlcMediaPlayer != null)
                 {
-                return myVlcMediaPlayer.SubTitles;
-            }
+                    return myVlcMediaPlayer.SubTitles;
+                }
                 else
                 {
                     return null;
@@ -305,12 +298,12 @@ namespace Vlc.DotNet.Forms
             {
                 if (myVlcMediaPlayer != null)
                 {
-                return myVlcMediaPlayer.Video;
-            }
+                    return myVlcMediaPlayer.Video;
+                }
                 else
                 {
                     return null;
-        }
+                }
             }
         }
 
@@ -321,13 +314,13 @@ namespace Vlc.DotNet.Forms
             {
                 if (myVlcMediaPlayer != null)
                 {
-                return myVlcMediaPlayer.Audio;
-            }
+                    return myVlcMediaPlayer.Audio;
+                }
                 else
                 {
                     return null;
                 }
-        }
+            }
         }
 
         [Browsable(false)]
@@ -338,7 +331,7 @@ namespace Vlc.DotNet.Forms
                 if (myVlcMediaPlayer != null)
                 {
                     return myVlcMediaPlayer.Length;
-        }
+                }
                 else
                 {
                     return -1;
@@ -386,4 +379,3 @@ namespace Vlc.DotNet.Forms
         #endregion
     }
 }
-
